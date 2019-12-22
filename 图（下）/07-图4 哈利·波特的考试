@@ -1,0 +1,39 @@
+#空矩阵
+N,E=[int(x) for x in input().split()]
+
+Network=[]
+
+for i in range(N):
+  temp=[]
+  for j in range(N):
+    if j==i:
+      temp.append(0)
+    else:
+      temp.append(1000)
+   Network.append(temp)
+  
+
+#添加边距
+for i in range(E):
+  x1,x2,length=[int(x) for x in input.split()]
+    Network[x1-1][x2-1]=length
+    Network[x2-1][x1-1]=length
+    
+#floyd 计算多源最短路径
+for k in range(N):
+  for i in range(N)：
+    for j in range(N):
+      if Network[i][k]+Network[k][j]<Network[i][j]:
+        Network[i][j] =Network[i][k]+Network[k][j]
+
+def find_animal():
+  distmin=1000
+  for i in range(N):
+    distmax=max(Network[i])
+    if distmax==1000:    
+      print(0)
+      return 0
+    elif distmin>distmax:
+      distmin=distmax
+      animal=i+1
+  print(animal ,dismint)
